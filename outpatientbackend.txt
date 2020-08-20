@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; Stringset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+	
+	
+	<% 	
+	
+		String pid_s = request.getParameter("pid");
+	int pid = Integer.parseInt(pid_s);
+	String pf=request.getParameter("pfn");
+	String ps=request.getParameter("pln");
+		String pn_s=request.getParameter("pn");
+	int pn = Integer.parseInt(pn_s);
+	String bg=request.getParameter("bg");
+	String ffirst=request.getParameter("fn");
+		String fph_s=request.getParameter("fph");
+	int fph = Integer.parseInt(fph_s);
+	String lc=request.getParameter("lc");
+	String symp=request.getParameter("s");
+		String de_s=request.getParameter("de");
+	int de = Integer.parseInt(de_s);
+		String doc_s=request.getParameter("doc");
+	int doc = Integer.parseInt(doc_s);
+	String d=request.getParameter("d");
+	String l=request.getParameter("at");
+	String rb=request.getParameter("rb");
+	
+	
+	 
+
+try
+{
+	Class.forName("oracle.jdbc.driver.OracleDriver");  
+			  
+			//step2 create  the connection object  
+			Connection con=DriverManager.getConnection(
+			"jdbc:oracle:thin:@localhost:1521:xe","HR","hr");
+			//step3 create the statement object  
+			Statement stmt=con.createStatement();  
+			  stmt.executeUpdate("insert into OUPATIENT(PATIENT_ID, PATIENT_FIRST_NAME, PATIENT_LAST_NAME, PATIENT_PHONE_NO, BLOOD_GROUP, FAMILY_MEMBER_NAME, FAMILY_PHONE_NO, LOC_AILMENT, SYMPTOM, DEP_ID, DOC_ID, APPOINTMENT_DATE, APPOINTMENT_TIME, REFERRED_BY)VALUES('"+pid+"','"+pf+"','"+ps+"','"+pn+"','"+bg+"','"+ffirst+"','"+fph+"','"+lc+"','"+symp+"','"+de+"','"+doc+"','"+d+"','"+l+"','"+rb+"')"); 
+  con.close();
+  out.println("GET WELL SOON,YOU ARE IN SAFE HANDS");
+
+
+}
+catch(Exception e)
+{
+	out.print(e);
+}
+
+
+%>
+
+
+
+

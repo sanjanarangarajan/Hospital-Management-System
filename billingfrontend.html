@@ -1,0 +1,29 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body>
+
+
+
+
+<div>
+ <fieldset>
+<legend align="center">BILLING DETAILS</legend>
+   <form action="billing.jsp" method="post" name="0.2_pattype" target="_blank">
+  <table align="center">
+   <tr><td> BILL ID:</td><td><input type="text" name="b_id"></td></tr>
+   <tr><td> DOCTOR ID:</td><td><input type="text" name="did"></td></tr>
+   <tr><td> PATIENT ID:</td><td><input type="text" name="pid"></td></tr>
+   <tr><td> DISCHARGED:</td><td><input type="text" name="discharged"></td></tr> 
+   <tr><td>PAYMENT METHOD:</td><td>
+    <input type="radio" name="pay_method" value="cash" checked> Cash<br>
+    <input type="radio" name="pay_method" value="card" checked> Card<br>
+    <input type="radio" name="pay_method" value="nb" checked> NetBanking<br>
+</td></tr>
+   <tr><td>BILL AMOUNT:</td><td><input type="text" name="amount"></td></tr>
+  
+  <tr><td><input type="submit" value="MAKE BILL"></td></tr>
+   <tr><td><input type="reset" value="reset" name="reset"></td></tr>
+   </table>
+   </form>
+   </fieldset>
+</div>
+</body></html>

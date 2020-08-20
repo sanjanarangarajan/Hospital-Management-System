@@ -1,0 +1,35 @@
+
+<%@ page import="java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+
+String patient_id=request.getParameter("patient_id");
+String doctor_id=request.getParameter("doctor_id");
+String mode_payment=request.getParameter("mode_p");
+int pph= (Integer)request.getAttribute("pn");
+String no_rooms=request.getParameter("rooms");
+String type_room=request.getParameter("room");
+int fph=  (Integer)request.getParameter("fph");
+String Date_of_entry=request.getParameter("entry_date");
+String Date_of_book=request.getParameter("book_date");
+String Date_of_exit=request.getParameter("exit_date");
+String Attenders_Name=request.getParameter("attender_name");
+String AttenderAge=request.getParameter("attender_age");
+String Attenderphone_no=request.getParameter("attender_phone_no");
+String Attenderaddress=request.getParameter("attender_address");
+String Attenderroom_no=request.getParameter("attender_room_no");
+out.println(patient_id+doctor_id+mode_payment);
+
+
+<%
+Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE","system","admin");%>
+<%Statement stmt=con.createStatement();
+ResultSet rs=stmt.executeQuery("select * from DOCTOR");
+while(rs.next())  
+    out.print(rs.getInt(1));
+con.close(); 
+%>
+
+
+%>

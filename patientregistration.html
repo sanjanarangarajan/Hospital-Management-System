@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fixappointment</title>
+
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+<script type="text/javascript">
+
+
+   function toggle(){
+        var radioValue = $("input[name='pt']:checked").val();
+        if(radioValue=="e"){
+            alert("Your are a - " + radioValue);
+            
+           
+        }
+        if($("#pti").prop("checked", true);){
+            alert("Your are a - " + radioValue);
+            $("table[id='em']").slideUp();
+            $("p[id='opd']").slideUp();
+        }
+        if($("#radio_1").prop("checked", true);){
+            alert("Your are a - " + radioValue);
+            $("p[id='ipd']").slideUp();
+            $("p[id='em']").slideUp();
+        }
+   }
+   $(document).ready(function(){
+       $("input[id='h1']").click(function(){
+           var radioValue = $("input[name='pt']:checked").val();
+           if(radioValue=="e"){
+        	   $( "div [id='ipd']" ).slideUp();
+        	   $("table[id='opd']").slideUp();
+               //$( ".opd" ).remove();
+               
+           }
+           if(radioValue=="pti"){
+        	   $( "div [id='ipd']" ).slideDown();
+        	   $("table[id='opd']").slideUp();
+        	   $( "div [id='em']" ).slideUp();
+           }
+           if(radioValue=="pto"){
+        	   $("table[id='opd']").slideDown();
+        	   $( "div [id='em']" ).slideUp();
+               $( "div [id='ipd']" ).slideUp();
+           }
+       });
+   });
+
+  { if(document.getElementById("pte").checked)
+	  {
+	  $("opd").slideup();
+	  $("ipd").slideup();
+	  document.getElementById("em").style.visibility="visible"
+	  
+	  }
+  if(document.getElementById("pto").checked)
+	  {$("opd").slidedown();
+	  $("ipd").slideup();
+	  $("em").slideup();
+	  //document.getElementById("ipd").style.visibility="hidden"
+	  document.getElementById("opd").style.visibility="visible"
+	  }
+  else
+	  document.getElementById("ipd").style.visibility="visible"
+  }
+  //document.getElementsByName('pt').addEventListener('click',toggle);
+</script>
+<script>
+var array = ["2015-06-14 00:00:00","2015-06-15 00:00:00","2015-06-16 00:00:00", "2015-06-24 00:00:00", "2015-06-21 00:00:00"]
+var trima = []
+for (i = 0; i < array.length; i++ ) {
+    trima.push(array[i].substring(10,""))
+}
+$('input').datepicker({
+    beforeShowDay: function(date){
+        var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+        return [ trima.indexOf(string) == -1 ]
+    }
+});
+
+</script>
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+var date = new Date();
+var currentMonth = date.getMonth();
+var currentDate = date.getDate();
+var currentYear = date.getFullYear();
+$('#datepicker').datepicker({
+maxDate: new Date(currentYear, currentMonth, currentDate)
+});
+});
+</script>
+</head>
+<body>
+ 
+  <table>
+     <tr><td>PATIENT TYPE:</td><td><input type='radio' name='pt' id='pte'  value='e' data-url='http://localhost/8180/pat_login/emergency.html' required>EMERGENCY</td><td><input type='radio' name='pt' value='pti' id='pti' class='pt' data-url='http://localhost/8180/pat_login/opd.jsp'>IN-PATIENT</td><td><input type='radio' name='pt' value='pto' id='pto' class='pto'  data-url='http://localhost/8180/pat_login/connect.jsp'>OUT-PATIENT</td></tr>
+     <tr><td><input type='button' id="h1" value='submit' onclick=toggle()></td></tr> 
+  </table>
+   <form action="oup.jsp" method="post" autocomplete name="pattype">
+  <table id='opd' style='visibility:visible' class='opd'>
+   <tr><th colspan='5'> OUT PATIENT APPOINTMENT DETAILS</th></tr>
+<tr><td>PATIENT ID:</td><td><input type='number' name='pid' placeholder='within 30'></td></tr>
+   <tr><td>PATIENT FIRST NAME:</td><td><input type='text' name='pfn' placeholder='within 30'></td></tr>
+   <tr><td>PATIENT LAST NAME:</td><td><input type='text' name='pln' placeholder='within 30'></td></tr>
+   <tr><td>PATIENT PHONE NUMBER:</td><td><input type='number' name='pn' placeholder='within 30'></td></tr>
+   <tr><td>BLOOD GROUP:</td><td>
+    <select name="bg" size='5' required>
+    <option value='ap'>A Positive</option>
+    <option value='an'>A Negative</option>
+    <option value='aop'>A ONE POSITIVE</option>
+    <option value='bp'>B Positive</option>
+    <option value='bn'>B Negative</option>
+    <option value='abp'>AB Positive</option>
+    <option value='abn'>AB Negative</option>
+    <option value='op'>O Positive</option>
+    <option value='on'>O Negative</option>
+</select></td></tr>
+<tr><td>FAMILY MEMBER NAME:</td><td><input type='text' name='fn' placeholder='within 30'></td></tr>
+<tr><td>FAMILY PHONE NUMBER:</td><td><input type='number' name='fph' placeholder='within 30'></td></tr>
+   <tr><td>LOCATION OF AILMENT:</td><td><input type='text' name='lc' placeholder='within 30'></td></tr>
+   <tr><td>SYMPTOM:</td><td><input type='text' name='s' placeholder='within 30'></td></tr>
+   <tr><td>APPOINTMENT DATE:</td><td><input type= "text" name="d" required></td></tr>
+   <tr><td>APPOINTMENT TIME:</td><td><input type='text' name='at' placeholder='in 24 hour clock notation' required></td></tr>
+ <tr><td>REFERRED BY:</td><td><input type='text' name='rb' placeholder='within 30'></td></tr>
+ <tr><td>DEPARTMENT:</td><td>
+     <select name='de' size='5' required autofocus>
+    <option value='1'>gynecology</option>
+    <option value='2'>cardiology</option>
+    <option value='3'>neurology</option>
+    <option value='4'>nephrology</option>
+    <option value='5'>opthalmology</option>
+    <option value='6' selected>general</option>
+</select></td></tr>
+   <tr><td>DOC ID:</td><td><input type='text' name='doc' placeholder='within 30'></td></tr>
+<tr><td><input type="submit" value="fix" ></td></tr>
+   <tr><td><input type="reset" value="reset" name="reset"></td></tr>  
+   </table>
+   </form>
+   
+  <div id="ipd" style='visibility:visible' class="ipd">
+ <form target="_blank" action="docback.jsp" name="ip">
+<fieldset>
+<legend>IN_REGISTRATION</legend>
+<br>
+Patient id:<br>
+    <select name="patient_id">
+    <option value="12"> 12</option>
+    </select>
+    <br>
+Doctor id:<br>
+    <select name="doctor_id">
+    <option value="30"> 30</option>
+    </select onclick()>
+<br><br>
+mode of payment:<br>
+  <input type="radio" name="mode" value="Down payment" checked> Down payment <br>
+  <input type="radio" name="mode" value="credit card" checked> credit card <br>
+  <input type="radio" name="mode" value="insurance" checked> insurance <br>
+  <br>
+No.of.rooms:<br>
+<input type="text" name="rooms"><br>
+
+<br>
+Type.of.room:<br>
+
+<input type="radio" name="room" value="AC" checked> AC<br>
+    <input type="radio" name="room" value="NON-AC" checked>NON-AC<br>
+    <input type="radio" name="room" value="GENERAL" checked>GENERAL<br>
+<br>
+
+Date_of_entry:<br>
+<input type="date" name="entry_date"><br>
+<br>
+Date_of_book:<br>
+<input type="date" name="book_date"><br>
+<br>
+Date_of_exit:<br>
+<input type="date" name="exit_date"><br>
+<br>
+
+
+Attender&#39;s Name:<br>
+<input type="text" name="attender_name"><br>
+
+<br>
+Attender&#39;s Age:<br>
+<input type="text" name="attender_age"><br>
+<br>
+Attender&#39;s phone_no:<br>
+<input type="tel" name="attender_phone_no"><br>
+<br>
+Attender&#39;s address:<br>
+<input type="text" name="attender_address"><br>
+<br>
+Attender&#39;s room_no:<br>
+<input type="number" name="attender_room_no"><br>
+<input type="submit" value="fix" >
+
+</fieldset> 
+</div>
+<div id='em' class='em' style="visibility:visible">
+<form target="_blank"  method='post' action='ip.jsp' name='emm'>
+<fieldset>
+<legend>EMERGENCY</legend>
+   Patient id:<br>
+    <select name="patient_id">
+    </select>
+    <br>
+Cause:<br>
+<input type="text" name="cause"><br>
+<br>
+Street:<br>
+<input type="text" name="street"><br>
+<br>
+Area:<br>
+<input type="text" name="area"><br>
+<br>
+Phone No:<br>
+<input type="tel" name="phone_no"><br>
+<br>
+Details:<br>
+<input type="textarea" name="details" rows='120' cols='120' required><br>
+<br>
+Date_of_admission:<br>
+<input type="date" name="Date_of_admission"><br>
+<input type="submit" value="fix" >
+</fieldset></form></div>
+
+</body>
+</html>

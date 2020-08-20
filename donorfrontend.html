@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>DONOR SIGNUP</title>
+</head>
+<body>
+ <fieldset>
+<legend align="center">DONOR DETAILS</legend>
+   <form action="donor.jsp" method="post" autocomplete name="pattype">
+  <table align="center">
+   <tr><td> DONOR ID:</td><td><input type='number' name='donor_id' required></td></tr>
+   <tr><td> BLOOD BANK ID:</td><td><input type='text' name='bank_id' placeholder='within 30'></td></tr>
+   <tr><td> NAME:</td><td><input type='text' name='name' placeholder='within 20'></td></tr>
+   <tr><td> AGE:</td><td><input type='text' name='age' placeholder='older than 18' required></td></tr>
+   <tr><td> DONATED DATE:</td><td><input type='text' name='donated' placeholder='DD-MM-YY'></td></tr>
+   <tr><td>BLOOD TYPE:</td><td>
+    <select size='5' required>
+    <option value='ap'>A Positive</option>
+    <option value='an'>A Negative</option>
+    <option value='aop'>A ONE POSITIVE</option>
+    <option value='bp'>B Positive</option>
+    <option value='bn'>B Negative</option>
+    <option value='abp'>AB Positive</option>
+    <option value='abn'>AB Negative</option>
+    <option value='op'>O Positive</option>
+    <option value='on'>O Negative</option>
+</select></td></tr>
+   <tr><td>BLOOD AMOUNT:</td><td><input type='text' name='lc' placeholder='mL'></td></tr>
+  
+  <tr><td><input type="submit" value="SUBMIT" ></td></tr>
+   <tr><td><input type="reset" value="reset" name="reset"></td></tr>
+   </table>
+   </form>
+   </fieldset>
+</body>
+</html>

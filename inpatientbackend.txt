@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.sql.*" %>
+<% 
+String pi_s=request.getParameter("patient_id");
+int pi=Integer.parseInt(pi_s);
+String di_s=request.getParameter("doctor_id");
+int di=Integer.parseInt(di_s);
+String mp=request.getParameter("mode_p");
+String nrs=request.getParameter("rooms");
+int nr=Integer.parseInt(nrs);
+String tr=request.getParameter("room");
+String De=request.getParameter("book_date");
+String Db=request.getParameter("entry_date");
+String Dei=request.getParameter("exit_date");
+String an=request.getParameter("attender_name");
+String aa_s=request.getParameter("attender_age");
+int aa=Integer.parseInt(aa_s);
+String ap_s=request.getParameter("attender_phone_no");
+int ap=Integer.parseInt(ap_s);
+String as=request.getParameter("attender_address");
+String ar_s=request.getParameter("attender_room_no");
+int ar=Integer.parseInt(ar_s);
+
+
+try
+{
+	Class.forName("oracle.jdbc.driver.OracleDriver");  
+			  
+			//step2 create  the connection object  
+			Connection con=DriverManager.getConnection(
+			"jdbc:oracle:thin:@localhost:1521:xe","HR","hr");
+			//step3 create the statement object  
+			Statement stmt=con.createStatement();  
+			  stmt.executeUpdate("insert into INPATIENT(PATIENT_ID, DOC_ID, MODE_P, NO_OF_ROOMS, TYPE_OF_ROOM, DATE_OF_BOOK, DATE_OF_ENTRY,DATE_OF_EXIT, ATTENDER_NAME, ATTENDER_AGE, ATTENDER_PHONE, ATTENDER_ADDRESS, ATTENDER_ROOM_NO)VALUES('"+pi+"','"+di+"','"+mp+"','"+nr+"','"+tr+"','"+De+"','"+Db+"','"+Dei+"','"+an+"','"+aa+"','"+ap+"','"+as+"','"+ar+"')"); 
+  con.close();
+  out.println("GET WELL SOON,YOU ARE IN SAFE HANDS");
+
+
+}
+catch(Exception e)
+{
+	out.print(e);
+}
+
+
+%>
+    
